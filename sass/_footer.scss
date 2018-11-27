@@ -1,0 +1,40 @@
+.footer {
+    background-color: $grey-dark;
+    margin-top: 15rem;
+    
+    
+    
+    p {
+        color: $grey-light;
+        font-size: 1.2rem;
+        text-align: center;
+        margin: 0 5%;
+        padding: 2rem 0;
+        
+        display: grid;
+        grid-template-columns: 1fr max-content 1fr;
+        grid-column-gap: 1rem;
+        align-items: center;
+    
+        &::before,
+        &::after {
+            content: "";
+            height: 1px;
+            display: block;
+            background-color: $grey-light;
+        }
+    }
+    
+    div {
+        font-size: 1rem;
+        color: #646464;
+        padding-left: 1rem;
+        
+        a {
+            text-decoration: none;
+            color: $grey-light;
+            font-size: 1rem;
+        }
+    }
+    
+}

@@ -1,0 +1,5 @@
+.container {
+    display: grid;
+    grid-template-rows: 95vh repeat(4, min-content); 
+    padding: 0 30px;
+}

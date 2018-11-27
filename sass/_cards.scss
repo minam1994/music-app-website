@@ -1,0 +1,103 @@
+.card {
+    -moz-perspective: 150rem;
+    perspective: 150rem;
+    position: relative;
+    margin-top: 3rem;
+        
+    &__side {
+        background-color: red;
+        height: 35rem;
+        width: 25rem;
+        transition: all .8s ease;
+            
+        position: absolute;
+        top: 0;
+        left: 0;
+        backface-visibility: hidden;
+        box-shadow: $shadow;
+            
+        &--front {
+            background-color: $grey-light;
+            
+            .card-image {
+                position: relative;
+                width: 25rem;
+                height: 15rem;
+                background-image: linear-gradient(to right bottom, rgba($primary-light, .8), rgba($primary-dark, .8)), url(../img/card.jpg);
+                background-size: cover;
+                
+                .type {
+                    font-size: 5rem;
+                    margin: 0;
+                    color: #fff;
+                    position: absolute;
+                    bottom: 0;
+                    padding-left: 1rem;
+                }
+            }
+            
+            
+            ul li {
+                list-style: none;
+                font-size: 1.5rem;
+                color: $grey-dark;
+                padding-top: 1.2rem;
+                
+            }
+            
+            .icons {
+                margin: 0;
+                padding: 0;
+                position: absolute;
+                bottom: 5rem;
+                right: 0;
+                display: none;
+                visibility: hidden;
+                
+                img {
+                    width: 3rem;
+                    padding-right: 1rem;
+                }
+            }
+            
+            .price {
+                font-size: 2rem;
+                margin: 0;
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                padding: 5px;
+                color: $grey-dark;
+            }
+        }
+            
+        &--back {
+            background-image: linear-gradient(to right bottom, $primary-light, $primary-dark);
+            transform: rotateY(180deg);
+            
+            button {
+                background-color: transparent;
+                border: none;                
+                position: absolute;
+                top: 35%;
+                left: 23%;
+                
+                &:not(:last-child) {
+                    padding-top: 20%;
+                }
+            }
+        }
+    }
+                
+    &:hover &__side--front {
+        transform: rotateY(180deg);
+    }
+    
+    &:hover &__side--back {
+        transform: rotateY(0);
+    }
+}
+
+.card-1 {
+    left: 55%;
+}

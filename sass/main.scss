@@ -1,0 +1,319 @@
+@import "grid";
+@import "variables";
+@import "header";
+@import "about";
+@import "steps";
+@import "cards";
+@import "footer";
+@import "queries";
+
+
+html {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    font-size: 62.5%; //10px = 1rem;
+}
+
+body {
+    
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    
+    
+    
+}
+
+//Titles
+
+h2 {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 3rem;
+    color: $primary;
+    padding-top: 3rem;
+    transition: all .5s;
+    animation: 3s fromLeft ease-out;
+
+    
+    span {
+        margin: 0 1rem;
+
+    }
+    
+    &:hover {
+        letter-spacing: 3px;
+    }
+}
+
+@keyframes fromLeft {
+    0% {
+        transform: translateX(-100%);
+    }
+    
+    80% {
+        transform: translateX(10px);
+    }
+    
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.btn {
+    font-size: 2rem;
+    text-transform: uppercase;
+    padding: 10px 25px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    background-color: $primary;
+    border-radius: 100px;
+    
+    &:hover {
+        background-color: #c9440a;
+    }
+    
+    
+    a {
+        text-decoration: none;
+        color: #fff;
+    }
+    
+    i {
+        padding-left: 5px;
+        font-size: 1.3rem;
+    }
+}
+
+// Navigation icon
+
+.icon {
+    font-size: 4rem;
+    position: fixed;
+    top: 3rem;
+    right: 3rem;
+    margin: 0;
+    padding: 0;
+    padding: 1rem 1.5rem;
+    border: 1px solid #d97338;
+    border-radius: 50%;
+    background-color: rgba($primary, .7);
+    cursor: pointer;
+    color: $grey-light;
+    z-index: 1000;
+    display: none;
+    
+    &:focus {
+        outline: none;
+    }
+}
+
+//For cards
+
+@mixin clear {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+.row {
+    width: 100%;
+    margin: 0 auto;
+    
+    @include clear;
+    
+    .col-1-of-2 {
+        float: left;
+        width: calc((100% - #{$gap}) / 2);
+        height: 30rem;
+        
+        &:not(:last-child) {
+            margin-right: $gap;
+        }
+    }
+}
+
+
+// Hidden & Show
+
+.show {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-image: linear-gradient(to right bottom, $primary-light, $primary-dark);
+    overflow: hidden;
+    z-index: 100;
+    transition: all .3s;
+    
+    ul {
+        padding-left: 0;
+        padding-bottom: 4rem;
+        list-style: none;
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        
+        li {
+            margin-bottom: 3rem;
+            border-bottom: 2px solid #fff;
+            padding-bottom: 5px;
+            font-size: 7rem;
+            
+            &:hover {
+                transform: skew(-15deg);
+            }
+            
+            a {
+                text-decoration: none;
+                color: #fff;
+                text-transform: uppercase;
+            }
+
+        }
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+//Media Queries
+
+@media only screen and (min-width: 90.625em) { //650px
+    * {
+        font-size: 100%;
+    }
+}
+
+@media only screen and (max-width: 56.25em) { //900px
+    * {
+        font-size: 50%;
+    }  
+    
+    .card-1 {
+        left: 40%;
+    }
+    .card__side--back button img {
+        width: 13rem; 
+    }
+    
+    .card__side--front:not(:hover) {
+        .icons {
+            visibility: visible;
+            display: block;
+        }
+    }
+}
+
+@media only screen and (max-width: 40.625em) { //650px
+    * {
+        font-size: 40%;
+    }  
+    
+    .main {
+        grid-template-columns: 1fr !important;
+        margin-bottom: 4rem;
+    }
+    
+    .main__text {
+        margin: 1rem 4rem;
+    }
+    .btn {
+        font-size: 3rem;
+        padding-top: 1rem;
+    }
+    
+    .steps__grid {
+        grid-template-columns: 1fr;
+        grid-row-gap: 4rem;
+    }
+    
+    .steps ul {
+        margin-top: 4rem;
+        
+        li span {
+            padding: 5px 8px;
+        }
+    }
+    
+    .card__side--back button img {
+        width: 12rem; 
+    }
+    
+    .container {
+        padding: 0;
+    }
+    
+    //nav
+    
+    .nav {
+        display: none;
+        visibility: hidden;
+    }
+    
+    .icon {
+        display: block;
+    }
+    
+    .icons {
+        visibility: visible;
+        display: block;
+    }
+    
+    .show ul li {
+        font-size: 8rem;
+    }
+}
+
+@media only screen and (max-width: 28.125em) { //450px
+    * {
+        font-size: 30%;
+    }
+    
+    .col-1-of-2 {
+        float: none !important;
+    }
+    
+    .card-1 {
+        left: 75%;
+    
+    }
+    
+    .card-2 {
+        left: 75%;
+        top: 20%;
+    }
+    .show ul li {
+        font-size: 14rem;
+        margin-bottom: 0;
+    }
+}
+
+@media only screen and (max-width: 18.75em) { //300px
+    * {
+        font-size: 20%;
+    }
+    
+    .card-1 {
+        left: 60%;
+    
+    }
+    
+    .card-2 {
+        left: 60%;
+    }
+    
+    .show ul li {
+        font-size: 15rem;
+    }
+}
